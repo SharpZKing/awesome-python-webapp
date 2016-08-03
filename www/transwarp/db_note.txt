@@ -1,0 +1,19 @@
+1, Dict的自定义调用方式：
+	d[key]
+	d.key
+	d = Dict(('a','b','c'),(1,2,3))====>{'a':1,'b':2,'c':3}
+
+	so：
+		class Dict(dict):
+			def __init__(self,names=(),valus=(),*kw*):
+				super(Dict,self).__init__(**kw)
+				for k,v in zip(names,values):
+					self[k] = v
+
+			......
+
+2,dict.update(d2)
+	将d2的参数添加到dict中去
+
+3，cursor.description：
+	
