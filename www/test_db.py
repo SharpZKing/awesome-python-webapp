@@ -17,8 +17,8 @@ u1 = User.find_first(' where email=?','test@example.com')
 
 print 'find User ,the user name is:',u1.name
 
-u1.delete()
+#u1.delete()
 
-u2 = User.find_first('where email=?', 'test@example.com')
-print 'find user:', u2
+#u2 = User.find_first('where email=?', 'test@example.com')
+#print 'find user:', u2
 

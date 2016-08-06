@@ -5,22 +5,22 @@ import config_default
 
 class Dict(dict):
 	def __init__(self, names=(), values=(), **kw):
-        super(Dict, self).__init__(**kw)
-        for k, v in zip(names, values):
-            self[k] = v
+		super(Dict, self).__init__(**kw)
+		for k,v in zip(names,values):
+			self[k] = v
 
-    def __getattr__(self, key):
-        try:
-            return self[key]
-        except KeyError:
-            raise AttributeError(r"'Dict' object has no attribute '%s'" % key)
+	def __getattr__(self, key):
+		try:
+			return self[key]
+		except KeyError:
+			raise AttributeError(r"'Dict' object has no attribute '%s'" % key)
 
-    def __setattr__(self, key, value):
-        self[key] = value
+	def __setattr__(self, key, value):
+		self[key] = value
 
 def merge(defaults,override):
 	r = {}
-	for k,v in defaults:
+	for k,v in defaults.iteritems():
 		if k in override:
 			if isinstance(v,dict):
 				r[k] = merge(v,override[k])
@@ -31,7 +31,7 @@ def merge(defaults,override):
 	return r
 
 def toDict(d):
-	d = Dict()
+	D = Dict()
 	for k,v in d.iteritems():
 		D[k] = toDict(v) if isinstance(v,dict) else v
 	return D
