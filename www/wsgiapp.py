@@ -9,6 +9,8 @@ from transwarp.web import WSGIApplication, Jinja2TemplateEngine
 
 from config import configs
 
+from datetime import datetime
+
 def datetime_filter(t):
     delta = int(time.time()-t)
     if delta < 60:
@@ -42,5 +44,7 @@ wsgi.add_module(urls)
 
 if __name__=='__main__':
 	wsgi.run(9000)
+#else:
+#   application = wsgi.get_wsgi_application()
 
 
