@@ -180,7 +180,7 @@ class Model(dict):
 		return [cls(**d) for d in L]
 
 	@classmethod
-	def find_by(cls,where,args):
+	def find_by(cls,where,*args):
 		L = db.select('select * from %s %s'%(cls.__table__,where),*args)
 		return [cls(**d) for d in L]
 
