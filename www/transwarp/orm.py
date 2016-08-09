@@ -156,7 +156,7 @@ class Model(dict):
 
 	def __getattr__(self,key):
 		try:
-			print '*&*&*&*&*&',key
+			#print '*&*&*&*&*&',key
 			return self[key]
 		except KeyError:
 			raise AttributeError('Dict has no attribute %s'%key)
@@ -166,7 +166,8 @@ class Model(dict):
 
 	@classmethod
 	def get(cls,pk):
-		d = db.select_one('select * from %s where %s=?' %(cls.__table__,cls.__primary_key__.name),pk)
+		d = db.select_one('select * from %s where %s=?' % (cls.__table__, cls.__primary_key__.name), pk)
+		print 'hahahhaha',d
 		return cls(**d) if d else None
 
 	@classmethod
